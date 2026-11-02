@@ -1,0 +1,151 @@
+.pdf-merger-page {
+  min-height: 100vh;
+  padding: 80px 20px;
+  background: var(--background, #f8f7f3);
+  color: var(--foreground, #171717);
+}
+
+.merger-container {
+  max-width: 850px;
+  margin: auto;
+}
+
+.merger-heading {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.tool-label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+.merger-heading h1 {
+  font-size: clamp(38px, 6vw, 58px);
+  margin: 15px 0;
+}
+
+.merger-heading p {
+  font-size: 17px;
+  opacity: 0.7;
+}
+
+.upload-box {
+  border: 2px dashed #aaa;
+  border-radius: 16px;
+  padding: 55px 20px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.upload-box h2 {
+  margin: 18px 0 8px;
+}
+
+.upload-box p {
+  opacity: 0.65;
+}
+
+.upload-button,
+.merge-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  background: #171717;
+  color: white;
+  padding: 14px 25px;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.privacy-note {
+  display: block;
+  margin-top: 22px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.selected-files {
+  margin-top: 35px;
+}
+
+.files-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.files-heading button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: white;
+}
+
+.file-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.file-info strong {
+  overflow-wrap: anywhere;
+}
+
+.file-info span {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.file-item button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.file-item button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.merge-button {
+  width: 100%;
+  padding: 17px;
+}
+
+.merge-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .pdf-merger-page {
+    padding: 45px 15px;
+  }
+
+  .file-item {
+    gap: 8px;
+    padding: 12px;
+  }
+}

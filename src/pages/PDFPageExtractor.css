@@ -1,0 +1,174 @@
+.extractor-page {
+  min-height: 100vh;
+  padding: 80px 20px;
+  background: var(--background, #f8f7f3);
+  color: var(--foreground, #171717);
+}
+
+.extractor-container {
+  max-width: 850px;
+  margin: auto;
+}
+
+.extractor-heading {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.extractor-heading h1 {
+  font-size: clamp(38px, 6vw, 58px);
+  margin: 15px 0;
+}
+
+.extractor-heading p {
+  font-size: 17px;
+  opacity: 0.7;
+  line-height: 1.6;
+}
+
+.extract-upload-box {
+  border: 2px dashed #aaa;
+  border-radius: 16px;
+  padding: 55px 20px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.extract-upload-box h2 {
+  margin: 18px 0 8px;
+}
+
+.extract-upload-box p {
+  opacity: 0.65;
+}
+
+.extract-upload-button,
+.extract-download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  background: #171717;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.extract-upload-box > span {
+  display: block;
+  margin-top: 22px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.extract-workspace {
+  margin-top: 30px;
+}
+
+.extract-file-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+.extract-file-card > div {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.extract-file-card strong {
+  overflow-wrap: anywhere;
+}
+
+.extract-file-card span {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.extract-file-card button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.extract-options {
+  margin-top: 30px;
+  padding: 28px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: white;
+}
+
+.extract-options h2 {
+  margin-top: 0;
+}
+
+.extract-options p {
+  opacity: 0.7;
+  line-height: 1.6;
+}
+
+.extract-options input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+  margin-top: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+.extract-options input:focus {
+  border-color: #171717;
+}
+
+.extract-options small {
+  display: block;
+  margin-top: 10px;
+  opacity: 0.6;
+}
+
+.extract-example {
+  background: #f5f4f0;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.extract-example p {
+  margin-bottom: 0;
+  font-size: 13px;
+}
+
+.extract-download-button {
+  width: 100%;
+  padding: 17px;
+}
+
+.extract-download-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .extractor-page {
+    padding: 45px 15px;
+  }
+
+  .extract-options {
+    padding: 20px;
+  }
+}
