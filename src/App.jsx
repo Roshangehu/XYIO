@@ -477,11 +477,46 @@ const externalTools = [
 function HomePage() {
   const navigate = useNavigate();
   const [dark, setDark] = useState(false);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(
+    () => sessionStorage.getItem("xylo-home-search") || ""
+  );
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState(
+    () => sessionStorage.getItem("xylo-active-category") || "All"
+  );
 
   const searchRef = useRef(null);
+
+  // Keep the selected category and search when a tool is opened and
+  // the user later returns to the homepage with the browser Back button.
+  useEffect(() => {
+    sessionStorage.setItem("xylo-active-category", activeCategory);
+  }, [activeCategory]);
+
+  useEffect(() => {
+    sessionStorage.setItem("xylo-home-search", search);
+  }, [search]);
+
+  // Restore the exact homepage scroll position after returning from a tool.
+  useEffect(() => {
+    const savedScroll = sessionStorage.getItem("xylo-home-scroll");
+    if (savedScroll === null) return;
+
+    const scrollY = Number(savedScroll);
+    const frame1 = requestAnimationFrame(() => {
+      requestAnimationFrame(() => window.scrollTo(0, scrollY));
+    });
+
+    sessionStorage.removeItem("xylo-home-scroll");
+    return () => cancelAnimationFrame(frame1);
+  }, []);
+
+  const openTool = (route) => {
+    sessionStorage.setItem("xylo-home-scroll", String(window.scrollY));
+    sessionStorage.setItem("xylo-active-category", activeCategory);
+    sessionStorage.setItem("xylo-home-search", search);
+    navigate(route);
+  };
 
   const filteredTools = tools.filter((tool) => {
     const matchesSearch = `${tool.name} ${tool.desc} ${tool.category}`
@@ -939,7 +974,7 @@ function HomePage() {
 
                 <button
                   className="tool-action"
-                  onClick={() => navigate(tool.route)}
+                  onClick={() => openTool(tool.route)}
                 >
                   Use tool <ArrowRight size={17} />
                 </button>
