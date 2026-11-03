@@ -38,7 +38,17 @@ const WordToPDF = lazy(() => import("./pages/WordToPDF"));
 const PDFEditor = lazy(() => import("./pages/PDFEditor"));
 const OCRPDF = lazy(() => import("./pages/OCRPDF"));
 
-
+// Image Tools
+const PNGToJPG = lazy(() => import("./pages/PNGToJPG"));
+const JPGToPNG = lazy(() => import("./pages/JPGToPNG"));
+const ImageCompressor = lazy(() => import("./pages/ImageCompressor"));
+const ImageResizer = lazy(() => import("./pages/ImageResizer"));
+const ImageCropper = lazy(() => import("./pages/ImageCropper"));
+const ImageToBase64 = lazy(() => import("./pages/ImageToBase64"));
+const Base64ToImage = lazy(() => import("./pages/Base64ToImage"));
+const ImageConverter = lazy(() => import("./pages/ImageConverter"));
+const HEICToJPG = lazy(() => import("./pages/HEICToJPG"));
+const BackgroundRemover = lazy(() => import("./pages/BackgroundRemover"));
 
 
 const categories = [
@@ -218,6 +228,81 @@ const tools = [
     type: "internal",
     route: "/tools/image-resizer",
   },
+// Image Tools
+
+{
+  name: "PNG to JPG",
+  desc: "Convert PNG images into JPG format.",
+  category: "Images & Graphics",
+  icon: Image,
+  color: "green",
+  type: "internal",
+  route: "/tools/png-to-jpg",
+},
+{
+  name: "JPG to PNG",
+  desc: "Convert JPG images into PNG format.",
+  category: "Images & Graphics",
+  icon: Image,
+  color: "green",
+  type: "internal",
+  route: "/tools/jpg-to-png",
+},
+{
+  name: "Image Cropper",
+  desc: "Crop images to your preferred dimensions.",
+  category: "Images & Graphics",
+  icon: Image,
+  color: "green",
+  type: "internal",
+  route: "/tools/image-cropper",
+},
+{
+  name: "Image to Base64",
+  desc: "Convert images into Base64 encoded strings.",
+  category: "Images & Graphics",
+  icon: Image,
+  color: "blue",
+  type: "internal",
+  route: "/tools/image-to-base64",
+},
+{
+  name: "Base64 to Image",
+  desc: "Convert Base64 strings back into images.",
+  category: "Images & Graphics",
+  icon: Image,
+  color: "blue",
+  type: "internal",
+  route: "/tools/base64-to-image",
+},
+{
+  name: "Image Converter",
+  desc: "Convert images between different formats.",
+  category: "Images & Graphics",
+  icon: Image,
+  color: "purple",
+  type: "internal",
+  route: "/tools/image-converter",
+},
+{
+  name: "HEIC to JPG",
+  desc: "Convert HEIC photos into JPG images.",
+  category: "Images & Graphics",
+  icon: Image,
+  color: "orange",
+  type: "internal",
+  route: "/tools/heic-to-jpg",
+},
+{
+  name: "Background Remover",
+  desc: "Remove backgrounds from images.",
+  category: "Images & Graphics",
+  icon: Image,
+  color: "purple",
+  type: "internal",
+  route: "/tools/background-remover",
+},
+
   {
     name: "JSON Formatter",
     desc: "Format and validate JSON data.",
@@ -892,7 +977,18 @@ export default function App() {
           <Route path="/tools/word-to-pdf" element={<WordToPDF />} />
           <Route path="/tools/pdf-editor" element={<PDFEditor />} />
           <Route path="/tools/ocr-pdf" element={<OCRPDF />} />
+          {/* Image Tools */}
 
+            <Route path="/tools/png-to-jpg" element={<PNGToJPG />} />
+            <Route path="/tools/jpg-to-png" element={<JPGToPNG />} />
+            <Route path="/tools/image-compressor" element={<ImageCompressor />} />
+            <Route path="/tools/image-resizer" element={<ImageResizer />} />
+            <Route path="/tools/image-cropper" element={<ImageCropper />} />
+            <Route path="/tools/image-to-base64" element={<ImageToBase64 />} />
+            <Route path="/tools/base64-to-image" element={<Base64ToImage />} />
+            <Route path="/tools/image-converter" element={<ImageConverter />} />
+            <Route path="/tools/heic-to-jpg" element={<HEICToJPG />} />
+            <Route path="/tools/background-remover" element={<BackgroundRemover />} />
           <Route path="*" element={<h2>404 — Page not found</h2>} />
         </Routes>
       </Suspense>

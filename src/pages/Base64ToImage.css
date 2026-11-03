@@ -1,0 +1,248 @@
+.bi-page {
+  min-height: 100vh;
+  padding: 60px 20px;
+  background: var(--bg, #f8f7f4);
+  color: var(--text, #171717);
+}
+
+.bi-container {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.bi-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.bi-icon {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  border-radius: 16px;
+  background: #e8f5e9;
+  color: #299b58;
+}
+
+.bi-header h1 {
+  font-size: clamp(30px, 5vw, 42px);
+  font-weight: 750;
+  margin: 0 0 12px;
+}
+
+.bi-header p {
+  max-width: 560px;
+  margin: auto;
+  color: var(--muted, #777);
+  line-height: 1.6;
+}
+
+.bi-workspace {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.bi-panel {
+  background: var(--card, #fff);
+  border: 1px solid var(--border, #e5e5e5);
+  border-radius: 16px;
+  padding: 22px;
+  min-width: 0;
+}
+
+.bi-panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.bi-panel-heading h3 {
+  font-size: 17px;
+  margin: 0;
+}
+
+.bi-clear {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  background: transparent;
+  color: #dc4444;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.bi-textarea {
+  width: 100%;
+  height: 260px;
+  resize: vertical;
+  padding: 13px;
+  border: 1px solid var(--border, #ddd);
+  border-radius: 9px;
+  background: var(--bg, #fafafa);
+  color: var(--text, #333);
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  outline: none;
+  overflow-wrap: anywhere;
+}
+
+.bi-textarea:focus {
+  border-color: #299b58;
+}
+
+.bi-hint {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted, #888);
+  margin: 10px 0 18px;
+}
+
+.bi-convert,
+.bi-download {
+  width: 100%;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: none;
+  border-radius: 9px;
+  background: #299b58;
+  color: white;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.bi-convert:hover,
+.bi-download:hover {
+  background: #207c46;
+}
+
+.bi-example {
+  margin-top: 22px;
+  padding: 13px;
+  border-radius: 9px;
+  background: var(--bg, #f4f4f4);
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.bi-example span {
+  color: var(--muted, #777);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.bi-example code {
+  font-size: 11px;
+  overflow-wrap: anywhere;
+  color: var(--text, #444);
+}
+
+.bi-example button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  border: none;
+  background: transparent;
+  color: #299b58;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.bi-badge {
+  color: #16864a;
+  background: #e8f7ee;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.bi-preview {
+  height: 340px;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  background-image: linear-gradient(45deg, #ddd 25%, transparent 25%),
+    linear-gradient(-45deg, #ddd 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ddd 75%),
+    linear-gradient(-45deg, transparent 75%, #ddd 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.bi-preview img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.bi-empty {
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted, #999);
+  text-align: center;
+}
+
+.bi-empty h3 {
+  color: var(--text, #444);
+  margin: 15px 0 5px;
+}
+
+.bi-empty p {
+  font-size: 13px;
+}
+
+.bi-format {
+  color: var(--muted, #777);
+  font-size: 12px;
+  margin: 12px 0;
+}
+
+.bi-error {
+  color: #dc4444;
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.bi-footer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 35px;
+  color: var(--muted, #888);
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .bi-page {
+    padding: 35px 14px;
+  }
+
+  .bi-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .bi-footer {
+    gap: 12px;
+  }
+}

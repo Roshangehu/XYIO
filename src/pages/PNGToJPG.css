@@ -1,0 +1,292 @@
+.png-jpg-page {
+  min-height: 100vh;
+  background: #f8f8f6;
+  color: #171717;
+  padding: 45px 20px;
+}
+
+.png-jpg-container {
+  max-width: 850px;
+  margin: auto;
+}
+
+.png-jpg-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #555;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+.png-jpg-heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.png-jpg-icon {
+  display: flex;
+  width: 65px;
+  height: 65px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  background: #e9f5eb;
+  color: #268342;
+  border-radius: 18px;
+}
+
+.png-jpg-label {
+  color: #268342;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.png-jpg-heading h1 {
+  font-size: clamp(30px, 5vw, 43px);
+  margin: 12px 0;
+  letter-spacing: -1.5px;
+}
+
+.png-jpg-heading p {
+  max-width: 550px;
+  margin: auto;
+  color: #777;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.png-jpg-card {
+  background: white;
+  border: 1px solid #e8e8e5;
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.035);
+}
+
+.png-jpg-upload {
+  min-height: 300px;
+  border: 2px dashed #d5ded5;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #32844a;
+  transition: 0.2s;
+  text-align: center;
+  padding: 25px;
+}
+
+.png-jpg-upload:hover {
+  background: #f8fcf8;
+  border-color: #32844a;
+}
+
+.png-jpg-upload h3 {
+  color: #222;
+  margin: 18px 0 5px;
+}
+
+.png-jpg-upload p {
+  color: #888;
+  font-size: 14px;
+}
+
+.png-jpg-upload button {
+  background: #171717;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 22px;
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+.png-jpg-upload small {
+  color: #999;
+}
+
+.png-jpg-file-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.png-jpg-file-header > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.png-jpg-file-header > div > svg {
+  color: #32844a;
+}
+
+.png-jpg-file-header strong,
+.png-jpg-file-header small {
+  display: block;
+}
+
+.png-jpg-file-header strong {
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.png-jpg-file-header small {
+  color: #999;
+  margin-top: 5px;
+}
+
+.png-jpg-file-header button {
+  background: #f2f2f2;
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.png-jpg-preview {
+  height: 320px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.png-jpg-preview img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.png-jpg-quality {
+  margin: 25px 0;
+}
+
+.png-jpg-quality label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.png-jpg-quality input {
+  width: 100%;
+  accent-color: #32844a;
+  cursor: pointer;
+}
+
+.png-jpg-quality > div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #999;
+  margin-top: 8px;
+}
+
+.png-jpg-convert,
+.png-jpg-download {
+  width: 100%;
+  min-height: 50px;
+  border: none;
+  border-radius: 9px;
+  background: #171717;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.png-jpg-download {
+  background: #278344;
+}
+
+.png-jpg-convert:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.png-jpg-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: #278344;
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+.png-jpg-info {
+  margin-top: 45px;
+}
+
+.png-jpg-info h2 {
+  font-size: 21px;
+  margin-bottom: 20px;
+}
+
+.png-jpg-info > div {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #e9e9e6;
+}
+
+.png-jpg-info > div span {
+  color: #278344;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.png-jpg-info > div p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.png-jpg-privacy {
+  text-align: center;
+  color: #999;
+  font-size: 12px;
+  margin-top: 35px;
+}
+
+.spin {
+  animation: png-jpg-spin 1s linear infinite;
+}
+
+@keyframes png-jpg-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .png-jpg-page {
+    padding: 25px 14px;
+  }
+
+  .png-jpg-card {
+    padding: 18px;
+  }
+
+  .png-jpg-preview {
+    height: 240px;
+  }
+
+  .png-jpg-heading h1 {
+    font-size: 31px;
+  }
+}
