@@ -50,7 +50,17 @@ const ImageConverter = lazy(() => import("./pages/ImageConverter"));
 const HEICToJPG = lazy(() => import("./pages/HEICToJPG"));
 const BackgroundRemover = lazy(() => import("./pages/BackgroundRemover"));
 
-
+// Create & Build Tools
+const SurveyMaker = lazy(() => import("./pages/SurveyMaker"));
+const QuizMaker = lazy(() => import("./pages/QuizMaker"));
+const PollMaker = lazy(() => import("./pages/PollMaker"));
+const FormBuilder = lazy(() => import("./pages/FormBuilder"));
+const ResumeMaker = lazy(() => import("./pages/ResumeMaker"));
+const InvoiceGenerator = lazy(() => import("./pages/InvoiceGenerator"));
+const CertificateMaker = lazy(() => import("./pages/CertificateMaker"));
+const FlashcardMaker = lazy(() => import("./pages/FlashcardMaker"));
+const TimetableMaker = lazy(() => import("./pages/TimetableMaker"));
+const RandomNamePicker = lazy(() => import("./pages/RandomNamePicker"));
 const categories = [
   {
     name: "PDF & Documents",
@@ -130,86 +140,86 @@ const tools = [
     route: "/tools/pdf-splitter",
   },
   {
-  name: "PDF Page Rotator",
-  desc: "Rotate PDF pages clockwise or counterclockwise.",
-  category: "PDF & Documents",
-  icon: FileText,
-  color: "red",
-  type: "internal",
-  route: "/tools/pdf-page-rotator"
-},
-{
-  name: "JPG to PDF",
-  desc: "Convert multiple images into one PDF document.",
-  category: "PDF & Documents",
-  icon: FileText,
-  color: "red",
-  type: "internal",
-  route: "/tools/jpg-to-pdf"
-},
-// 7. PDF Compressor
-{
-  name: "PDF Compressor",
-  desc: "Reduce PDF file size for easier sharing.",
-  category: "PDF & Documents",
-  icon: FileText,
-  color: "orange",
-  type: "internal",
-  route: "/tools/pdf-compressor"
-},
-
-// 8. PDF to Word
-{
-  name: "PDF to Word",
-  desc: "Convert PDF documents into editable Word files.",
-  category: "PDF & Documents",
-  icon: FileText,
-  color: "blue",
-  type: "internal",
-  route: "/tools/pdf-to-word"
-},
-
-// 9. Word to PDF
-{
-  name: "Word to PDF",
-  desc: "Convert Word documents into PDF files.",
-  category: "PDF & Documents",
-  icon: FileText,
-  color: "blue",
-  type: "internal",
-  route: "/tools/word-to-pdf"
-},
-
-// 10. PDF Editor
-{
-  name: "PDF Editor",
-  desc: "Add text, images and annotations to PDF files.",
-  category: "PDF & Documents",
-  icon: FileText,
-  color: "purple",
-  type: "internal",
-  route: "/tools/pdf-editor"
-},
-
-// 11. OCR PDF
-{
-  name: "OCR PDF",
-  desc: "Extract text from scanned PDF documents.",
-  category: "PDF & Documents",
-  icon: FileText,
-  color: "green",
-  type: "internal",
-  route: "/tools/ocr-pdf"
-},
+    name: "PDF Page Rotator",
+    desc: "Rotate PDF pages clockwise or counterclockwise.",
+    category: "PDF & Documents",
+    icon: FileText,
+    color: "red",
+    type: "internal",
+    route: "/tools/pdf-page-rotator",
+  },
   {
-  name: "PDF Page Extractor",
-  desc: "Extract selected pages from a PDF.",
-  category: "PDF & Documents",
-  icon: FileText,
-  color: "red",
-  type: "internal",
-  route: "/tools/pdf-page-extractor"
-},
+    name: "JPG to PDF",
+    desc: "Convert multiple images into one PDF document.",
+    category: "PDF & Documents",
+    icon: FileText,
+    color: "red",
+    type: "internal",
+    route: "/tools/jpg-to-pdf",
+  },
+  // 7. PDF Compressor
+  {
+    name: "PDF Compressor",
+    desc: "Reduce PDF file size for easier sharing.",
+    category: "PDF & Documents",
+    icon: FileText,
+    color: "orange",
+    type: "internal",
+    route: "/tools/pdf-compressor",
+  },
+
+  // 8. PDF to Word
+  {
+    name: "PDF to Word",
+    desc: "Convert PDF documents into editable Word files.",
+    category: "PDF & Documents",
+    icon: FileText,
+    color: "blue",
+    type: "internal",
+    route: "/tools/pdf-to-word",
+  },
+
+  // 9. Word to PDF
+  {
+    name: "Word to PDF",
+    desc: "Convert Word documents into PDF files.",
+    category: "PDF & Documents",
+    icon: FileText,
+    color: "blue",
+    type: "internal",
+    route: "/tools/word-to-pdf",
+  },
+
+  // 10. PDF Editor
+  {
+    name: "PDF Editor",
+    desc: "Add text, images and annotations to PDF files.",
+    category: "PDF & Documents",
+    icon: FileText,
+    color: "purple",
+    type: "internal",
+    route: "/tools/pdf-editor",
+  },
+
+  // 11. OCR PDF
+  {
+    name: "OCR PDF",
+    desc: "Extract text from scanned PDF documents.",
+    category: "PDF & Documents",
+    icon: FileText,
+    color: "green",
+    type: "internal",
+    route: "/tools/ocr-pdf",
+  },
+  {
+    name: "PDF Page Extractor",
+    desc: "Extract selected pages from a PDF.",
+    category: "PDF & Documents",
+    icon: FileText,
+    color: "red",
+    type: "internal",
+    route: "/tools/pdf-page-extractor",
+  },
   {
     name: "Image Compressor",
     desc: "Compress images without losing quality.",
@@ -228,80 +238,80 @@ const tools = [
     type: "internal",
     route: "/tools/image-resizer",
   },
-// Image Tools
+  // Image Tools
 
-{
-  name: "PNG to JPG",
-  desc: "Convert PNG images into JPG format.",
-  category: "Images & Graphics",
-  icon: Image,
-  color: "green",
-  type: "internal",
-  route: "/tools/png-to-jpg",
-},
-{
-  name: "JPG to PNG",
-  desc: "Convert JPG images into PNG format.",
-  category: "Images & Graphics",
-  icon: Image,
-  color: "green",
-  type: "internal",
-  route: "/tools/jpg-to-png",
-},
-{
-  name: "Image Cropper",
-  desc: "Crop images to your preferred dimensions.",
-  category: "Images & Graphics",
-  icon: Image,
-  color: "green",
-  type: "internal",
-  route: "/tools/image-cropper",
-},
-{
-  name: "Image to Base64",
-  desc: "Convert images into Base64 encoded strings.",
-  category: "Images & Graphics",
-  icon: Image,
-  color: "blue",
-  type: "internal",
-  route: "/tools/image-to-base64",
-},
-{
-  name: "Base64 to Image",
-  desc: "Convert Base64 strings back into images.",
-  category: "Images & Graphics",
-  icon: Image,
-  color: "blue",
-  type: "internal",
-  route: "/tools/base64-to-image",
-},
-{
-  name: "Image Converter",
-  desc: "Convert images between different formats.",
-  category: "Images & Graphics",
-  icon: Image,
-  color: "purple",
-  type: "internal",
-  route: "/tools/image-converter",
-},
-{
-  name: "HEIC to JPG",
-  desc: "Convert HEIC photos into JPG images.",
-  category: "Images & Graphics",
-  icon: Image,
-  color: "orange",
-  type: "internal",
-  route: "/tools/heic-to-jpg",
-},
-{
-  name: "Background Remover",
-  desc: "Remove backgrounds from images.",
-  category: "Images & Graphics",
-  icon: Image,
-  color: "purple",
-  type: "internal",
-  route: "/tools/background-remover",
-},
+  {
+    name: "PNG to JPG",
+    desc: "Convert PNG images into JPG format.",
+    category: "Images & Graphics",
+    icon: Image,
+    color: "green",
+    type: "internal",
+    route: "/tools/png-to-jpg",
+  },
+  {
+    name: "JPG to PNG",
+    desc: "Convert JPG images into PNG format.",
+    category: "Images & Graphics",
+    icon: Image,
+    color: "green",
+    type: "internal",
+    route: "/tools/jpg-to-png",
+  },
+  {
+    name: "Image Cropper",
+    desc: "Crop images to your preferred dimensions.",
+    category: "Images & Graphics",
+    icon: Image,
+    color: "green",
+    type: "internal",
+    route: "/tools/image-cropper",
+  },
+  {
+    name: "Image to Base64",
+    desc: "Convert images into Base64 encoded strings.",
+    category: "Images & Graphics",
+    icon: Image,
+    color: "blue",
+    type: "internal",
+    route: "/tools/image-to-base64",
+  },
+  {
+    name: "Base64 to Image",
+    desc: "Convert Base64 strings back into images.",
+    category: "Images & Graphics",
+    icon: Image,
+    color: "blue",
+    type: "internal",
+    route: "/tools/base64-to-image",
+  },
+  {
+    name: "Image Converter",
+    desc: "Convert images between different formats.",
+    category: "Images & Graphics",
+    icon: Image,
+    color: "purple",
+    type: "internal",
+    route: "/tools/image-converter",
+  },
+  {
+    name: "HEIC to JPG",
+    desc: "Convert HEIC photos into JPG images.",
+    category: "Images & Graphics",
+    icon: Image,
+    color: "orange",
+    type: "internal",
+    route: "/tools/heic-to-jpg",
+  },
+  {
+    name: "Background Remover",
+    desc: "Remove backgrounds from images.",
+    category: "Images & Graphics",
+    icon: Image,
+    color: "purple",
+    type: "internal",
+    route: "/tools/background-remover",
+  },
 
   {
     name: "JSON Formatter",
@@ -953,9 +963,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Suspense
-        fallback={
-          <div className="tool-loading">Loading XYLO tool...</div>
-        }
+        fallback={<div className="tool-loading">Loading XYLO tool...</div>}
       >
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -966,10 +974,7 @@ export default function App() {
             path="/tools/pdf-page-extractor"
             element={<PDFPageExtractor />}
           />
-          <Route
-            path="/tools/pdf-page-rotator"
-            element={<PDFPageRotator />}
-          />
+          <Route path="/tools/pdf-page-rotator" element={<PDFPageRotator />} />
           <Route path="/tools/jpg-to-pdf" element={<JPGToPDF />} />
 
           <Route path="/tools/pdf-compressor" element={<PDFCompressor />} />
@@ -979,16 +984,40 @@ export default function App() {
           <Route path="/tools/ocr-pdf" element={<OCRPDF />} />
           {/* Image Tools */}
 
-            <Route path="/tools/png-to-jpg" element={<PNGToJPG />} />
-            <Route path="/tools/jpg-to-png" element={<JPGToPNG />} />
-            <Route path="/tools/image-compressor" element={<ImageCompressor />} />
-            <Route path="/tools/image-resizer" element={<ImageResizer />} />
-            <Route path="/tools/image-cropper" element={<ImageCropper />} />
-            <Route path="/tools/image-to-base64" element={<ImageToBase64 />} />
-            <Route path="/tools/base64-to-image" element={<Base64ToImage />} />
-            <Route path="/tools/image-converter" element={<ImageConverter />} />
-            <Route path="/tools/heic-to-jpg" element={<HEICToJPG />} />
-            <Route path="/tools/background-remover" element={<BackgroundRemover />} />
+          <Route path="/tools/png-to-jpg" element={<PNGToJPG />} />
+          <Route path="/tools/jpg-to-png" element={<JPGToPNG />} />
+          <Route path="/tools/image-compressor" element={<ImageCompressor />} />
+          <Route path="/tools/image-resizer" element={<ImageResizer />} />
+          <Route path="/tools/image-cropper" element={<ImageCropper />} />
+          <Route path="/tools/image-to-base64" element={<ImageToBase64 />} />
+          <Route path="/tools/base64-to-image" element={<Base64ToImage />} />
+          <Route path="/tools/image-converter" element={<ImageConverter />} />
+          <Route path="/tools/heic-to-jpg" element={<HEICToJPG />} />
+          <Route
+            path="/tools/background-remover"
+            element={<BackgroundRemover />}
+          />
+
+          {/* Create & Build Tools */}
+          <Route path="/tools/survey-maker" element={<SurveyMaker />} />
+          <Route path="/tools/quiz-maker" element={<QuizMaker />} />
+          <Route path="/tools/poll-maker" element={<PollMaker />} />
+          <Route path="/tools/form-builder" element={<FormBuilder />} />
+          <Route path="/tools/resume-maker" element={<ResumeMaker />} />
+          <Route
+            path="/tools/invoice-generator"
+            element={<InvoiceGenerator />}
+          />
+          <Route
+            path="/tools/certificate-maker"
+            element={<CertificateMaker />}
+          />
+          <Route path="/tools/flashcard-maker" element={<FlashcardMaker />} />
+          <Route path="/tools/timetable-maker" element={<TimetableMaker />} />
+          <Route
+            path="/tools/random-name-picker"
+            element={<RandomNamePicker />}
+          />
           <Route path="*" element={<h2>404 — Page not found</h2>} />
         </Routes>
       </Suspense>
