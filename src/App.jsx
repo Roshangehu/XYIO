@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from "react";
-import PDFSplitter from "./pages/PDFSplitter";
+import { useState, useEffect, useRef, Suspense, lazy } from "react";
 import {
   Search,
   ArrowRight,
@@ -25,11 +24,19 @@ import {
   Menu,
 } from "lucide-react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import PDFMerger from "./pages/PDFMerger";
 import "./App.css";
-import PDFPageExtractor from "./pages/PDFPageExtractor";
 
-import PDFPageRotator from "./pages/PDFPageRotator";
+// Load PDF tools only when their routes are opened.
+const PDFMerger = lazy(() => import("./pages/PDFMerger"));
+const PDFSplitter = lazy(() => import("./pages/PDFSplitter"));
+const PDFPageExtractor = lazy(() => import("./pages/PDFPageExtractor"));
+const PDFPageRotator = lazy(() => import("./pages/PDFPageRotator"));
+const JPGToPDF = lazy(() => import("./pages/JPGToPDF"));
+const PDFCompressor = lazy(() => import("./pages/PDFCompressor"));
+const PDFToWord = lazy(() => import("./pages/PDFToWord"));
+const WordToPDF = lazy(() => import("./pages/WordToPDF"));
+const PDFEditor = lazy(() => import("./pages/PDFEditor"));
+const OCRPDF = lazy(() => import("./pages/OCRPDF"));
 
 
 
@@ -104,15 +111,6 @@ const tools = [
     route: "/tools/pdf-merger",
   },
   {
-    name: "PDF Compressor",
-    desc: "Reduce PDF file size without losing quality.",
-    category: "PDF & Documents",
-    icon: FileText,
-    color: "orange",
-    type: "internal",
-    route: "/tools/pdf-compressor",
-  },
-  {
     name: "PDF Splitter",
     desc: "Split a PDF into multiple files.",
     category: "PDF & Documents",
@@ -129,6 +127,69 @@ const tools = [
   color: "red",
   type: "internal",
   route: "/tools/pdf-page-rotator"
+},
+{
+  name: "JPG to PDF",
+  desc: "Convert multiple images into one PDF document.",
+  category: "PDF & Documents",
+  icon: FileText,
+  color: "red",
+  type: "internal",
+  route: "/tools/jpg-to-pdf"
+},
+// 7. PDF Compressor
+{
+  name: "PDF Compressor",
+  desc: "Reduce PDF file size for easier sharing.",
+  category: "PDF & Documents",
+  icon: FileText,
+  color: "orange",
+  type: "internal",
+  route: "/tools/pdf-compressor"
+},
+
+// 8. PDF to Word
+{
+  name: "PDF to Word",
+  desc: "Convert PDF documents into editable Word files.",
+  category: "PDF & Documents",
+  icon: FileText,
+  color: "blue",
+  type: "internal",
+  route: "/tools/pdf-to-word"
+},
+
+// 9. Word to PDF
+{
+  name: "Word to PDF",
+  desc: "Convert Word documents into PDF files.",
+  category: "PDF & Documents",
+  icon: FileText,
+  color: "blue",
+  type: "internal",
+  route: "/tools/word-to-pdf"
+},
+
+// 10. PDF Editor
+{
+  name: "PDF Editor",
+  desc: "Add text, images and annotations to PDF files.",
+  category: "PDF & Documents",
+  icon: FileText,
+  color: "purple",
+  type: "internal",
+  route: "/tools/pdf-editor"
+},
+
+// 11. OCR PDF
+{
+  name: "OCR PDF",
+  desc: "Extract text from scanned PDF documents.",
+  category: "PDF & Documents",
+  icon: FileText,
+  color: "green",
+  type: "internal",
+  route: "/tools/ocr-pdf"
 },
   {
   name: "PDF Page Extractor",
@@ -806,19 +867,35 @@ function HomePage() {
 export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/tools/pdf-merger" element={<PDFMerger />} />
-        <Route path="/tools/pdf-splitter" element={<PDFSplitter />} />
-        <Route
-          path="/tools/pdf-page-extractor"
-          element={<PDFPageExtractor />}
-        />
-        <Route
-  path="/tools/pdf-page-rotator"
-  element={<PDFPageRotator />}
-/>
-      </Routes>
+      <Suspense
+        fallback={
+          <div className="tool-loading">Loading XYLO tool...</div>
+        }
+      >
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+
+          <Route path="/tools/pdf-merger" element={<PDFMerger />} />
+          <Route path="/tools/pdf-splitter" element={<PDFSplitter />} />
+          <Route
+            path="/tools/pdf-page-extractor"
+            element={<PDFPageExtractor />}
+          />
+          <Route
+            path="/tools/pdf-page-rotator"
+            element={<PDFPageRotator />}
+          />
+          <Route path="/tools/jpg-to-pdf" element={<JPGToPDF />} />
+
+          <Route path="/tools/pdf-compressor" element={<PDFCompressor />} />
+          <Route path="/tools/pdf-to-word" element={<PDFToWord />} />
+          <Route path="/tools/word-to-pdf" element={<WordToPDF />} />
+          <Route path="/tools/pdf-editor" element={<PDFEditor />} />
+          <Route path="/tools/ocr-pdf" element={<OCRPDF />} />
+
+          <Route path="*" element={<h2>404 — Page not found</h2>} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }

@@ -1,0 +1,286 @@
+.compressor-page {
+  min-height: 100vh;
+  padding: 80px 20px;
+  background: var(--background, #f8f7f3);
+  color: var(--foreground, #171717);
+}
+
+.compressor-container {
+  max-width: 850px;
+  margin: auto;
+}
+
+.compressor-heading {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.compressor-heading h1 {
+  font-size: clamp(38px, 6vw, 58px);
+  margin: 15px 0;
+}
+
+.compressor-heading p {
+  font-size: 17px;
+  opacity: 0.7;
+  line-height: 1.6;
+}
+
+.compress-upload-box {
+  border: 2px dashed #aaa;
+  border-radius: 16px;
+  padding: 55px 20px;
+  text-align: center;
+  background: rgba(255,255,255,0.5);
+}
+
+.compress-upload-box h2 {
+  margin: 18px 0 8px;
+}
+
+.compress-upload-box p {
+  opacity: 0.65;
+}
+
+.compress-upload-button,
+.compress-start-button,
+.compress-download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  background: #171717;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.compress-upload-box > span {
+  display: block;
+  margin-top: 22px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.compress-workspace {
+  margin-top: 30px;
+}
+
+.compress-file-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+.compress-file-card > div {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.compress-file-card strong {
+  overflow-wrap: anywhere;
+}
+
+.compress-file-card span {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.compress-file-card button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.compress-options {
+  margin-top: 30px;
+  padding: 28px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+.compress-options h2 {
+  margin-top: 0;
+}
+
+.compress-options > p {
+  opacity: 0.7;
+}
+
+.compression-levels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.compression-levels button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.compression-levels button:hover {
+  border-color: #171717;
+}
+
+.compression-levels .compression-active {
+  border: 2px solid #171717;
+  background: #f5f4f0;
+}
+
+.compression-levels button span {
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0.65;
+}
+
+.compression-warning {
+  margin-top: 25px;
+  padding: 16px;
+  background: #fff6e5;
+  color: #654b1c;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.compress-start-button {
+  width: 100%;
+  padding: 17px;
+}
+
+.compression-progress {
+  margin-top: 30px;
+  padding: 25px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+.progress-heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.progress-track {
+  height: 10px;
+  border-radius: 20px;
+  background: #e5e5e5;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #171717;
+  transition: width 0.3s ease;
+}
+
+.compression-progress p {
+  font-size: 13px;
+  opacity: 0.6;
+  margin-top: 12px;
+}
+
+.compression-result {
+  margin-top: 30px;
+  padding: 35px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.compression-result > svg {
+  color: #26834b;
+}
+
+.compression-result h2 {
+  margin-bottom: 8px;
+}
+
+.compression-result > p {
+  opacity: 0.65;
+}
+
+.size-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.size-comparison > div {
+  padding: 20px;
+  background: #f5f4f0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.size-comparison span {
+  font-size: 13px;
+  opacity: 0.65;
+}
+
+.size-comparison strong {
+  font-size: 22px;
+}
+
+.saved-info {
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.compress-download-button {
+  width: 100%;
+  margin-top: 25px;
+}
+
+.compress-again-button {
+  margin-top: 18px;
+  border: none;
+  background: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .compressor-page {
+    padding: 45px 15px;
+  }
+
+  .compress-options {
+    padding: 20px;
+  }
+
+  .compression-levels {
+    grid-template-columns: 1fr;
+  }
+
+  .compression-result {
+    padding: 22px;
+  }
+}
