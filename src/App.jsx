@@ -41,6 +41,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import "./App.css";
 import SitePage from "./pages/SitePage";
 import RouteSEO from "./seo/RouteSEO";
@@ -1558,6 +1559,7 @@ export default function App() {
           </Routes>
         </Suspense>
       </RouteErrorBoundary>
+      <Analytics />
     </BrowserRouter>
   );
 }
