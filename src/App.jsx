@@ -39,11 +39,11 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  useNavigate,
   Link,
 } from "react-router-dom";
 import "./App.css";
 import SitePage from "./pages/SitePage";
+import RouteSEO from "./seo/RouteSEO";
 
 // Load PDF tools only when their routes are opened.
 const PDFMerger = lazy(() => import("./pages/PDFMerger"));
@@ -566,7 +566,6 @@ function readStoredRoutes(key) {
 }
 
 function HomePage() {
-  const navigate = useNavigate();
   const [dark, setDark] = useState(
     () => readStorage(localStorage, "xylo-dark-mode") === "true",
   );
@@ -653,7 +652,6 @@ function HomePage() {
       setNotice("Homepage state could not be saved for this session.");
     }
     recordRecentTool(route);
-    navigate(route);
   };
 
   const toggleFavorite = (route) => {
@@ -1241,12 +1239,13 @@ function HomePage() {
 
                 <p>{tool.desc}</p>
 
-                <button
+                <Link
                   className="tool-action"
+                  to={tool.route}
                   onClick={() => openTool(tool.route)}
                 >
                   Use tool <ArrowRight size={17} />
-                </button>
+                </Link>
               </article>
             );
           })}
@@ -1474,6 +1473,7 @@ class RouteErrorBoundary extends Component {
 export default function App() {
   return (
     <BrowserRouter>
+      <RouteSEO />
       <RouteErrorBoundary>
         <Suspense
           fallback={
