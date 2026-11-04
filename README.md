@@ -20,6 +20,6 @@ Most file operations run in the browser. Some tools load large processing librar
 
 ## Pages and SEO
 
-About, Contact, Privacy, Terms, FAQ, and the not-found page are available as client-side routes. The Contact page links to the project's GitHub issue tracker.
+About, Contact, Privacy, Terms, FAQ, tool suggestions, and the not-found page are available as client-side routes. Tool suggestions open a prefilled email draft to the project maintainer; the visitor reviews and sends it from their own email app.
 
 `public/robots.txt` and `public/sitemap.xml` use the current deployment URL, `https://xylo-dun.vercel.app/`. Update those files and the canonical/Open Graph URL in `index.html` if the production domain changes.

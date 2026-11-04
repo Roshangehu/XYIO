@@ -958,6 +958,57 @@ a {
   background: var(--surface-soft);
 }
 
+.suggestion-form {
+  display: grid;
+  gap: 18px;
+  max-width: 680px;
+  margin-top: 28px;
+}
+
+.suggestion-form label {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.suggestion-form label > span,
+.suggestion-form-note {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.suggestion-form input,
+.suggestion-form select,
+.suggestion-form textarea {
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-weight: 400;
+}
+
+.suggestion-form textarea {
+  resize: vertical;
+}
+
+.suggestion-form .site-primary-link {
+  justify-self: start;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+}
+
+.suggestion-form-note {
+  margin: 0;
+  line-height: 1.6;
+}
+
 .site-back-link {
   margin-top: 38px;
   color: var(--muted);
@@ -1090,6 +1141,18 @@ a {
   border-radius: 7px;
   font-size: 12px;
   font-weight: 700;
+}
+
+.submit-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.suggestion-submit-button {
+  background: var(--surface-soft);
+  color: var(--text);
 }
 
 /* FOOTER */
@@ -1267,6 +1330,10 @@ a {
     flex-direction: column;
     align-items: flex-start;
     margin: 65px auto;
+  }
+
+  .submit-actions {
+    justify-content: flex-start;
   }
 
   .footer {

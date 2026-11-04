@@ -1365,9 +1365,14 @@ function HomePage() {
           </p>
         </div>
 
-        <Link className="submit-button" to="/contact">
-          Submit your tool <ArrowUpRight size={18} />
-        </Link>
+        <div className="submit-actions">
+          <Link className="submit-button" to="/contact">
+            Submit your tool <ArrowUpRight size={18} />
+          </Link>
+          <Link className="submit-button suggestion-submit-button" to="/suggest-tool">
+            Suggest a tool <ArrowUpRight size={18} />
+          </Link>
+        </div>
       </section>
 
       {/* FOOTER */}
@@ -1392,6 +1397,7 @@ function HomePage() {
             <a href="#discover">Discover</a>
             <Link to="/about">About</Link>
             <Link to="/contact">Contact</Link>
+            <Link to="/suggest-tool">Suggest a tool</Link>
             <Link to="/privacy">Privacy</Link>
             <Link to="/terms">Terms</Link>
             <Link to="/faq">FAQ</Link>
@@ -1514,6 +1520,10 @@ export default function App() {
           />
           <Route path="/about" element={<SitePage page="about" />} />
           <Route path="/contact" element={<SitePage page="contact" />} />
+          <Route
+            path="/suggest-tool"
+            element={<SitePage page="suggestTool" />}
+          />
           <Route path="/privacy" element={<SitePage page="privacy" />} />
           <Route path="/terms" element={<SitePage page="terms" />} />
           <Route path="/faq" element={<SitePage page="faq" />} />

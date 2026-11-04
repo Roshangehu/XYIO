@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Mail } from "lucide-react";
+
+const suggestionEmail = "joshiroshan369@gmail.com";
 
 const pageContent = {
   about: {
@@ -74,25 +77,127 @@ function ContactPage() {
       <div className="site-info-card">
         <h2>Get in touch</h2>
         <p>
-          XYLO is maintained in the open. Use the project issue tracker to
-          report a bug, ask a question, or share a suggestion.
+          Email the XYLO maintainer with questions, feedback, or bug reports.
         </p>
         <a
           className="site-primary-link"
-          href="https://github.com/Roshangehu/XYIO/issues/new"
-          target="_blank"
-          rel="noopener noreferrer"
+          href={`mailto:${suggestionEmail}?subject=${encodeURIComponent("XYLO feedback")}`}
         >
-          Contact the project <ArrowUpRight size={17} />
+          Email XYLO <Mail size={17} />
         </a>
       </div>
       <div className="site-info-card">
         <h2>Submitting a tool</h2>
         <p>
-          Include the tool name, its website, and a short description in your
-          suggestion. Never include private information in a public issue.
+          Have an idea for a tool that is not in XYLO yet? Share what it should
+          do and who it would help.
         </p>
+        <Link className="site-primary-link" to="/suggest-tool">
+          Suggest a tool <ArrowUpRight size={17} />
+        </Link>
       </div>
+    </>
+  );
+}
+
+function ToolSuggestionPage() {
+  const [form, setForm] = useState({
+    name: "",
+    website: "",
+    category: "",
+    details: "",
+  });
+  const [emailDraft, setEmailDraft] = useState("");
+
+  const updateField = (event) => {
+    setForm((current) => ({ ...current, [event.target.name]: event.target.value }));
+    setEmailDraft("");
+  };
+
+  const createEmailDraft = (event) => {
+    event.preventDefault();
+    const body = [
+      `Suggested tool: ${form.name.trim()}`,
+      `Website: ${form.website.trim() || "Not provided"}`,
+      `Category: ${form.category || "Not specified"}`,
+      "",
+      "What should this tool do, and how would it be useful?",
+      form.details.trim(),
+    ].join("\n");
+    setEmailDraft(
+      `mailto:${suggestionEmail}?subject=${encodeURIComponent(`XYLO tool suggestion: ${form.name.trim()}`)}&body=${encodeURIComponent(body)}`,
+    );
+  };
+
+  return (
+    <>
+      <p className="site-lead">
+        Tell us about a tool you would like to see in XYLO. Your email app will
+        open with the suggestion addressed to the XYLO maintainer.
+      </p>
+      <form className="suggestion-form site-info-card" onSubmit={createEmailDraft}>
+        <label>
+          Tool name
+          <input
+            name="name"
+            value={form.name}
+            onChange={updateField}
+            placeholder="e.g. Markdown previewer"
+            required
+            maxLength={100}
+          />
+        </label>
+        <label>
+          Tool website <span>(optional)</span>
+          <input
+            name="website"
+            type="url"
+            value={form.website}
+            onChange={updateField}
+            placeholder="https://example.com"
+          />
+        </label>
+        <label>
+          Category <span>(optional)</span>
+          <select name="category" value={form.category} onChange={updateField}>
+            <option value="">Choose a category</option>
+            <option>PDF &amp; Documents</option>
+            <option>Images &amp; Graphics</option>
+            <option>AI &amp; Machine Learning</option>
+            <option>Developer Tools</option>
+            <option>Business &amp; Finance</option>
+            <option>Education</option>
+            <option>Productivity</option>
+            <option>Design &amp; Creative</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>
+          What should it do?
+          <textarea
+            name="details"
+            value={form.details}
+            onChange={updateField}
+            placeholder="Describe the task this tool would help with and why it would be useful."
+            required
+            rows={5}
+            maxLength={1500}
+          />
+        </label>
+        {emailDraft ? (
+          <a className="site-primary-link" href={emailDraft}>
+            Open email to send suggestion <Mail size={17} />
+          </a>
+        ) : (
+          <button className="site-primary-link" type="submit">
+            Continue to email <ArrowUpRight size={17} />
+          </button>
+        )}
+        <p className="suggestion-form-note">
+          XYLO does not send or store this form. Your email app opens a draft;
+          review and send it there.
+        </p>
+      </form>
     </>
   );
 }
@@ -161,6 +266,14 @@ export default function SitePage({ page }) {
     );
   }
 
+  if (page === "suggestTool") {
+    return (
+      <SiteLayout title="Suggest a tool">
+        <ToolSuggestionPage />
+      </SiteLayout>
+    );
+  }
+
   if (page === "faq") {
     return (
       <SiteLayout title="Frequently asked questions">
@@ -216,6 +329,7 @@ function SiteLayout({ title, children }) {
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
           <Link to="/faq">FAQ</Link>
+          <Link to="/suggest-tool">Suggest a tool</Link>
           <Link to="/contact">Contact</Link>
         </nav>
       </header>
