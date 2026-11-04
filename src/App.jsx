@@ -530,6 +530,13 @@ const searchKeywords = {
   "Random Name Picker": "lottery chooser shuffle winner group list",
 };
 
+const getSearchTerms = (query) => query.toLowerCase().match(/[\p{L}\p{N}]+/gu) || [];
+const matchesQuery = (tool, terms) => {
+  const text = `${tool.name} ${tool.desc} ${tool.category} ${tool.filterCategory || ""} ${tool.keywords || searchKeywords[tool.name] || ""}`
+    .toLowerCase();
+  return terms.every((term) => text.includes(term));
+};
+
 const storedToolsKey = "xylo-recent-tools";
 const favoriteToolsKey = "xylo-favorite-tools";
 const validToolIds = new Set([
@@ -665,16 +672,8 @@ function HomePage() {
     }
   };
 
-  const searchText = (tool) =>
-    `${tool.name} ${tool.desc} ${tool.category} ${tool.filterCategory || ""} ${tool.keywords || searchKeywords[tool.name] || ""}`
-      .toLowerCase();
-  const searchTerms = search
-    .toLowerCase()
-    .match(/[\p{L}\p{N}]+/gu) || [];
-  const matchesSearch = (tool) => {
-    const text = searchText(tool);
-    return searchTerms.every((term) => text.includes(term));
-  };
+  const searchTerms = getSearchTerms(search);
+  const matchesSearch = (tool) => matchesQuery(tool, searchTerms);
   const recordRecentTool = (toolId) => {
     const updatedRecent = [toolId, ...recentTools.filter((item) => item !== toolId)].slice(
       0,
@@ -859,8 +858,36 @@ function HomePage() {
                 ref={searchRef}
                 value={search}
                 onChange={(e) => {
-                  setSearch(e.target.value);
+                  const nextSearch = e.target.value;
+                  const nextTerms = getSearchTerms(nextSearch);
+                  setSearch(nextSearch);
                   setShowSuggestions(true);
+                  if (activeCategory !== "All" && nextTerms.length > 0) {
+                    const hasMatchesInSelectedCategory = [
+                      ...tools,
+                      ...externalTools,
+                    ].some(
+                      (tool) =>
+                        (tool.category === activeCategory ||
+                          tool.filterCategory === activeCategory) &&
+                        matchesQuery(tool, nextTerms),
+                    );
+                    const hasMatchesInOtherCategories = [
+                      ...tools,
+                      ...externalTools,
+                    ].some(
+                      (tool) =>
+                        tool.category !== activeCategory &&
+                        tool.filterCategory !== activeCategory &&
+                        matchesQuery(tool, nextTerms),
+                    );
+                    if (
+                      !hasMatchesInSelectedCategory &&
+                      hasMatchesInOtherCategories
+                    ) {
+                      setActiveCategory("All");
+                    }
+                  }
                 }}
                 onFocus={() => setShowSuggestions(true)}
                 placeholder="Search tools, websites or categories..."
