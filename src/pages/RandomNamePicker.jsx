@@ -22,7 +22,6 @@ export default function RandomNamePicker() {
     }
   });
 
-  const [winner, setWinner] = useState("");
   const [winners, setWinners] = useState([]);
   const [winnerCount, setWinnerCount] = useState(1);
   const [isPicking, setIsPicking] = useState(false);
@@ -40,16 +39,14 @@ export default function RandomNamePicker() {
 
     if (!newNames.length) return;
 
-    saveNames((prev => [...names, ...newNames]));
+    saveNames([...names, ...newNames]);
     setNameInput("");
-    setWinner("");
     setWinners([]);
   };
 
   const removeName = (index) => {
     const updated = names.filter((_, i) => i !== index);
     saveNames(updated);
-    setWinner("");
     setWinners([]);
   };
 
@@ -57,7 +54,6 @@ export default function RandomNamePicker() {
     if (!window.confirm("Remove all names from the list?")) return;
 
     saveNames([]);
-    setWinner("");
     setWinners([]);
   };
 
@@ -73,7 +69,6 @@ export default function RandomNamePicker() {
     );
 
     setIsPicking(true);
-    setWinner("");
     setWinners([]);
 
     setTimeout(() => {
@@ -85,15 +80,12 @@ export default function RandomNamePicker() {
       }
 
       const selected = shuffled.slice(0, count);
-
       setWinners(selected);
-      setWinner(selected[0]);
       setIsPicking(false);
     }, 900);
   };
 
   const resetPicker = () => {
-    setWinner("");
     setWinners([]);
   };
 

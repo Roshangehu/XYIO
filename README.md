@@ -1,19 +1,25 @@
-# React + Vite
+# XYLO — Everything Digital, One Place
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+XYLO is a client-side React and Vite collection of PDF, image, creator, study, productivity, business, and developer tools, plus links to selected external services. Tools are code-split and loaded when their routes are opened.
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```sh
+npm install
+npm run dev
+npm run lint
+npm run build
+npm run preview
+```
 
-## React Compiler
+## Browser storage
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Favorites, recently opened tools, and the theme preference are stored in local storage. Homepage search, selected category, and scroll position are kept in session storage to restore navigation when returning from a tool.
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+Most file operations run in the browser. Some tools load large processing libraries or models only when needed. Review a tool's behavior before using sensitive data.
 
-## Expanding the Oxlint configuration
+## Pages and SEO
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+About, Contact, Privacy, Terms, FAQ, and the not-found page are available as client-side routes. The Contact page links to the project's GitHub issue tracker.
+
+`public/robots.txt` and `public/sitemap.xml` use the current deployment URL, `https://xylo-dun.vercel.app/`. Update those files and the canonical/Open Graph URL in `index.html` if the production domain changes.

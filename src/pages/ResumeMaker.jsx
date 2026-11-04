@@ -64,7 +64,6 @@ function ResumeMaker() {
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(resume));
-    setSaveMessage("All changes saved");
   }, [resume]);
 
   const updatePersonal = (field, value) => {

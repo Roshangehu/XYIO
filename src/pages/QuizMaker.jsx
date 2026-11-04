@@ -46,7 +46,6 @@ function QuizMaker() {
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(quiz));
-    setSaveMessage("All changes saved");
   }, [quiz]);
 
   const updateQuiz = (field, value) => {

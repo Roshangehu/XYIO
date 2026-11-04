@@ -120,7 +120,7 @@ export default function OCRPDF() {
       setCopied(true);
 
       setTimeout(() => setCopied(false), 2000);
-    } catch (error) {
+    } catch {
       setMessage("Unable to copy text.");
     }
   };

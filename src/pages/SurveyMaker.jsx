@@ -3,7 +3,6 @@ import {
   Plus,
   Trash2,
   Eye,
-  Pencil,
   Save,
   X,
   ChevronDown,
@@ -58,7 +57,6 @@ function SurveyMaker() {
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(survey));
-    setSaveMessage("All changes saved");
   }, [survey]);
 
   const updateSurvey = (field, value) => {

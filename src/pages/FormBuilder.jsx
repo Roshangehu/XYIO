@@ -66,7 +66,6 @@ function FormBuilder() {
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(form));
-    setSaveMessage("All changes saved");
   }, [form]);
 
   useEffect(() => {

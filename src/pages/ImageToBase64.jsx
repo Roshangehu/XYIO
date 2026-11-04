@@ -15,6 +15,7 @@ export default function ImageToBase64() {
   const [base64, setBase64] = useState("");
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState("");
+  const fileName = file?.name || "image";
 
   const handleFile = (selectedFile) => {
     if (!selectedFile) return;
@@ -54,6 +55,8 @@ export default function ImageToBase64() {
   };
 
   const downloadBase64 = () => {
+    if (!file || !base64) return;
+
     const blob = new Blob([base64], {
       type: "text/plain;charset=utf-8",
     });
@@ -62,7 +65,7 @@ export default function ImageToBase64() {
     const link = document.createElement("a");
 
     link.href = url;
-    link.download = `${file.name}.txt`;
+    link.download = `${fileName}.txt`;
     link.click();
 
     URL.revokeObjectURL(url);

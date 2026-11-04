@@ -8,7 +8,6 @@ import {
   RefreshCw,
   CheckCircle,
 } from "lucide-react";
-import { removeBackground } from "@imgly/background-removal";
 import "./BackgroundRemover.css";
 
 export default function BackgroundRemover() {
@@ -54,6 +53,7 @@ export default function BackgroundRemover() {
     setProgress("Preparing AI model...");
 
     try {
+      const { removeBackground } = await import("@imgly/background-removal");
       const resultBlob = await removeBackground(file, {
         model: "medium",
         output: {

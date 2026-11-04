@@ -3,7 +3,6 @@ import {
   Upload,
   Download,
   RefreshCw,
-  Image as ImageIcon,
   X,
   CheckCircle,
 } from "lucide-react";

@@ -1,0 +1,466 @@
+.cgpa-page {
+  min-height: 100vh;
+  padding: 55px 24px 80px;
+  background: var(--bg, #f8f8f6);
+  color: var(--text, #171717);
+}
+
+.cgpa-container {
+  max-width: 1050px;
+  margin: auto;
+}
+
+.cgpa-heading {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 35px;
+}
+
+.cgpa-heading-icon {
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: #e9e6ff;
+  color: #6954d9;
+}
+
+.cgpa-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #888;
+}
+
+.cgpa-heading h1 {
+  margin: 7px 0;
+  font-size: clamp(28px, 4vw, 38px);
+  letter-spacing: -1.5px;
+}
+
+.cgpa-heading p {
+  margin: 0;
+  color: var(--muted, #777);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.cgpa-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 5px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border, #dedede);
+  border-radius: 10px;
+  background: var(--card, #fff);
+}
+
+.cgpa-tabs button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted, #777);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.cgpa-tabs button.active {
+  background: #171717;
+  color: white;
+}
+
+.cgpa-result-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 27px;
+  margin-bottom: 35px;
+  border-radius: 13px;
+  background: #171c19;
+  color: white;
+}
+
+.cgpa-result-banner span {
+  color: #aab8ae;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.cgpa-result-banner h2 {
+  margin: 10px 0 5px;
+  font-size: 42px;
+  letter-spacing: -1.5px;
+}
+
+.cgpa-result-banner p {
+  margin: 0;
+  color: #aab8ae;
+  font-size: 12px;
+}
+
+.cgpa-percentage {
+  padding-left: 25px;
+  border-left: 1px solid #39443d;
+}
+
+.cgpa-percentage strong {
+  display: block;
+  margin-top: 12px;
+  color: #8de0aa;
+  font-size: 28px;
+}
+
+.cgpa-percentage small {
+  display: block;
+  margin-top: 5px;
+  color: #aab8ae;
+  font-size: 11px;
+}
+
+.cgpa-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.cgpa-section-header h3 {
+  margin: 0 0 5px;
+  font-size: 19px;
+}
+
+.cgpa-section-header p {
+  margin: 0;
+  color: var(--muted, #777);
+  font-size: 12px;
+}
+
+.cgpa-add-btn,
+.cgpa-add-subject {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid var(--border, #dedede);
+  border-radius: 8px;
+  background: var(--card, #fff);
+  color: var(--text, #171717);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.cgpa-add-btn {
+  padding: 11px 14px;
+}
+
+.cgpa-semesters {
+  display: grid;
+  gap: 17px;
+}
+
+.cgpa-semester-card {
+  padding: 22px;
+  border: 1px solid var(--border, #dedede);
+  border-radius: 12px;
+  background: var(--card, #fff);
+}
+
+.cgpa-semester-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.cgpa-semester-name {
+  display: block;
+  max-width: 220px;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text, #171717);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.cgpa-semester-header > div:first-child > span {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted, #888);
+  font-size: 11px;
+}
+
+.cgpa-semester-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.cgpa-semester-right > div {
+  text-align: right;
+}
+
+.cgpa-semester-right small {
+  display: block;
+  color: var(--muted, #888);
+  font-size: 10px;
+}
+
+.cgpa-semester-right strong {
+  display: block;
+  margin-top: 3px;
+  color: #23834b;
+  font-size: 20px;
+}
+
+.cgpa-delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33px;
+  height: 33px;
+  border: 1px solid var(--border, #dedede);
+  border-radius: 7px;
+  background: transparent;
+  color: #d45c5c;
+  cursor: pointer;
+}
+
+.cgpa-table-head,
+.cgpa-subject-row {
+  display: grid;
+  grid-template-columns: 1.7fr 0.7fr 1fr 35px;
+  gap: 10px;
+  align-items: center;
+}
+
+.cgpa-table-head {
+  padding: 0 0 10px;
+  color: var(--muted, #888);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.cgpa-subject-row {
+  margin-bottom: 9px;
+}
+
+.cgpa-subject-row input,
+.cgpa-subject-row select {
+  width: 100%;
+  min-width: 0;
+  height: 39px;
+  padding: 0 10px;
+  border: 1px solid var(--border, #dedede);
+  border-radius: 7px;
+  outline: none;
+  background: var(--bg, #fafafa);
+  color: var(--text, #171717);
+  font-size: 12px;
+}
+
+.cgpa-add-subject {
+  padding: 9px 12px;
+  margin-top: 14px;
+}
+
+.cgpa-bottom-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.cgpa-bottom-actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 15px;
+  border: 1px solid var(--border, #dedede);
+  border-radius: 8px;
+  background: var(--card, #fff);
+  color: var(--text, #171717);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cgpa-single-card {
+  max-width: 650px;
+  margin: 20px auto 35px;
+  padding: 27px;
+  border: 1px solid var(--border, #dedede);
+  border-radius: 13px;
+  background: var(--card, #fff);
+}
+
+.cgpa-single-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #6954d9;
+}
+
+.cgpa-single-heading h3 {
+  margin: 0;
+  color: var(--text, #171717);
+  font-size: 18px;
+}
+
+.cgpa-single-card > p {
+  margin: 12px 0 25px;
+  color: var(--muted, #777);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.cgpa-single-card > label {
+  display: block;
+  margin: 17px 0 8px;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.cgpa-single-card > input {
+  width: 100%;
+  height: 44px;
+  padding: 0 13px;
+  border: 1px solid var(--border, #dedede);
+  border-radius: 8px;
+  outline: none;
+  background: var(--bg, #fafafa);
+  color: var(--text, #171717);
+  font-size: 14px;
+}
+
+.cgpa-single-result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  padding: 18px;
+  border-radius: 9px;
+  background: #171c19;
+  color: white;
+}
+
+.cgpa-single-result span {
+  color: #bdc9c0;
+  font-size: 13px;
+}
+
+.cgpa-single-result strong {
+  color: #8de0aa;
+  font-size: 25px;
+}
+
+.cgpa-formula {
+  display: block;
+  margin-top: 12px;
+  color: var(--muted, #888);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.cgpa-info-card {
+  padding: 25px;
+  margin-top: 35px;
+  border: 1px solid var(--border, #dedede);
+  border-radius: 12px;
+  background: var(--card, #fff);
+}
+
+.cgpa-info-card h3 {
+  margin: 0 0 20px;
+  font-size: 17px;
+}
+
+.cgpa-info-card > div {
+  margin-top: 17px;
+}
+
+.cgpa-info-card strong {
+  font-size: 13px;
+}
+
+.cgpa-info-card p {
+  margin: 6px 0 0;
+  color: var(--muted, #777);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.cgpa-privacy {
+  margin-top: 20px;
+  text-align: center;
+  color: var(--muted, #888);
+  font-size: 12px;
+}
+
+@media (max-width: 650px) {
+  .cgpa-page {
+    padding: 35px 15px 60px;
+  }
+
+  .cgpa-result-banner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cgpa-percentage {
+    width: 100%;
+    padding: 17px 0 0;
+    border-left: none;
+    border-top: 1px solid #39443d;
+  }
+
+  .cgpa-section-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cgpa-semester-card {
+    padding: 15px;
+  }
+
+  .cgpa-table-head,
+  .cgpa-subject-row {
+    grid-template-columns: 1.3fr 0.7fr 1fr 30px;
+    gap: 5px;
+  }
+
+  .cgpa-subject-row input,
+  .cgpa-subject-row select {
+    padding: 0 5px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 400px) {
+  .cgpa-tabs button {
+    flex: 1 1 100%;
+  }
+
+  .cgpa-table-head,
+  .cgpa-subject-row {
+    grid-template-columns: 1.2fr 0.65fr 0.9fr 28px;
+    gap: 4px;
+  }
+}

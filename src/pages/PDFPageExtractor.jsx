@@ -4,7 +4,6 @@ import {
   Upload,
   FileText,
   Download,
-  Scissors,
   X,
   FileCheck
 } from "lucide-react";

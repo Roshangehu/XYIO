@@ -1,0 +1,373 @@
+.json-tool-page {
+  min-height: 100vh;
+  padding: 55px 24px 80px;
+  background: var(--bg, #f8f8f6);
+  color: var(--text, #171717);
+}
+
+.json-tool-container {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.json-tool-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 35px;
+}
+
+.json-heading-icon {
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: #e9e6ff;
+  color: #6954d9;
+}
+
+.json-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #777;
+}
+
+.json-tool-heading h1 {
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 750;
+  letter-spacing: -1.5px;
+  margin: 7px 0;
+}
+
+.json-tool-heading p {
+  color: var(--muted, #777);
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.json-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.json-toolbar-left,
+.json-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.json-toolbar-left label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted, #777);
+}
+
+.json-toolbar select {
+  padding: 9px 12px;
+  border: 1px solid var(--border, #dedede);
+  border-radius: 8px;
+  background: var(--card, #fff);
+  color: var(--text, #171717);
+  outline: none;
+  font-size: 13px;
+}
+
+.json-sample-btn,
+.json-clear-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 13px;
+  border: 1px solid var(--border, #dedede);
+  border-radius: 8px;
+  background: var(--card, #fff);
+  color: var(--text, #171717);
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.json-sample-btn:hover,
+.json-clear-btn:hover {
+  border-color: #777;
+}
+
+.json-editor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 17px;
+}
+
+.json-editor-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border, #dedede);
+  border-radius: 13px;
+  background: var(--card, #fff);
+}
+
+.json-card-header {
+  height: 52px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border, #dedede);
+}
+
+.json-card-header > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.json-card-header strong {
+  font-size: 13px;
+}
+
+.json-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.input-dot {
+  background: #e5a23d;
+}
+
+.output-dot {
+  background: #36a879;
+}
+
+.json-card-label {
+  color: var(--muted, #888);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.json-textarea {
+  display: block;
+  width: 100%;
+  height: 350px;
+  padding: 18px;
+  resize: vertical;
+  border: none;
+  outline: none;
+  background: var(--card, #fff);
+  color: var(--text, #171717);
+  font-family: "Consolas", "Monaco", monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  tab-size: 2;
+}
+
+.json-textarea::placeholder {
+  color: #999;
+}
+
+.json-editor-footer {
+  min-height: 38px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border, #dedede);
+  color: var(--muted, #888);
+  font-size: 11px;
+}
+
+.json-actions {
+  display: flex;
+  gap: 11px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.json-actions button {
+  min-height: 43px;
+  padding: 0 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.json-action-primary {
+  border: 1px solid #171717;
+  background: #171717;
+  color: #fff;
+}
+
+.json-action-primary:hover {
+  background: #383838;
+}
+
+.json-action-secondary {
+  border: 1px solid var(--border, #dedede);
+  background: var(--card, #fff);
+  color: var(--text, #171717);
+}
+
+.json-action-secondary:hover {
+  border-color: #777;
+}
+
+.json-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 13px 15px;
+  margin-top: 17px;
+  border-radius: 9px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.json-error {
+  background: #fff0ef;
+  color: #c0392b;
+  border: 1px solid #ffd5d1;
+}
+
+.json-success {
+  background: #eaf8f0;
+  color: #16834f;
+  border: 1px solid #c8ebd7;
+}
+
+.json-output-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.json-output-actions button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--border, #dedede);
+  border-radius: 8px;
+  background: var(--card, #fff);
+  color: var(--text, #171717);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.json-output-actions button:hover {
+  border-color: #777;
+}
+
+.json-info-card {
+  margin-top: 45px;
+  padding: 25px;
+  border: 1px solid var(--border, #dedede);
+  border-radius: 13px;
+  background: var(--card, #fff);
+}
+
+.json-info-card h3 {
+  margin: 0 0 22px;
+  font-size: 17px;
+  letter-spacing: -0.3px;
+}
+
+.json-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.json-info-grid strong {
+  font-size: 13px;
+}
+
+.json-info-grid p {
+  margin: 6px 0 0;
+  color: var(--muted, #777);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.json-privacy-note {
+  margin-top: 20px;
+  text-align: center;
+  color: var(--muted, #888);
+  font-size: 12px;
+}
+
+@media (max-width: 750px) {
+  .json-tool-page {
+    padding: 35px 16px 60px;
+  }
+
+  .json-editor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .json-textarea {
+    height: 280px;
+  }
+
+  .json-toolbar {
+    align-items: flex-start;
+  }
+
+  .json-toolbar-right {
+    width: 100%;
+  }
+
+  .json-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 450px) {
+  .json-tool-heading {
+    gap: 12px;
+  }
+
+  .json-heading-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .json-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .json-action-primary {
+    grid-column: span 2;
+  }
+
+  .json-actions button {
+    padding: 0 10px;
+  }
+
+  .json-output-actions {
+    flex-direction: column;
+  }
+
+  .json-output-actions button {
+    justify-content: center;
+  }
+}

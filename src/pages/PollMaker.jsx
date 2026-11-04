@@ -4,7 +4,6 @@ import {
   Trash2,
   Eye,
   Save,
-  X,
   Check,
   BarChart3,
   Vote,
@@ -43,7 +42,6 @@ function PollMaker() {
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(poll));
-    setMessage("All changes saved");
   }, [poll]);
 
   const updatePoll = (field, value) => {

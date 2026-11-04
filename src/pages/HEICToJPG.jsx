@@ -7,7 +7,6 @@ import {
   X,
   CheckCircle,
 } from "lucide-react";
-import heic2any from "heic2any";
 import "./HEICToJPG.css";
 
 export default function HEICToJPG() {
@@ -57,6 +56,7 @@ export default function HEICToJPG() {
     setConvertedUrl("");
 
     try {
+      const { default: heic2any } = await import("heic2any");
       const result = await heic2any({
         blob: file,
         toType: "image/jpeg",

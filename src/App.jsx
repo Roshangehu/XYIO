@@ -1,4 +1,11 @@
-import { useState, useEffect, useRef, Suspense, lazy } from "react";
+import {
+  Component,
+  useState,
+  useEffect,
+  useRef,
+  Suspense,
+  lazy,
+} from "react";
 import {
   Search,
   ArrowRight,
@@ -25,9 +32,18 @@ import {
   FileCode,
   ExternalLink,
   Menu,
+  Star,
+  Clock3,
 } from "lucide-react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useNavigate,
+  Link,
+} from "react-router-dom";
 import "./App.css";
+import SitePage from "./pages/SitePage";
 
 // Load PDF tools only when their routes are opened.
 const PDFMerger = lazy(() => import("./pages/PDFMerger"));
@@ -52,7 +68,10 @@ const Base64ToImage = lazy(() => import("./pages/Base64ToImage"));
 const ImageConverter = lazy(() => import("./pages/ImageConverter"));
 const HEICToJPG = lazy(() => import("./pages/HEICToJPG"));
 const BackgroundRemover = lazy(() => import("./pages/BackgroundRemover"));
-
+const JSONFormatter = lazy(() => import("./pages/JSONFormatter"));
+const GSTCalculator = lazy(() => import("./pages/GSTCalculator"));
+const CGPACalculator = lazy(() => import("./pages/CGPACalculator"));
+const QRCodeGenerator = lazy(() => import("./pages/QRCodeGenerator"));
 // Create & Build Tools
 const SurveyMaker = lazy(() => import("./pages/SurveyMaker"));
 const QuizMaker = lazy(() => import("./pages/QuizMaker"));
@@ -68,56 +87,48 @@ const categories = [
   {
     name: "PDF & Documents",
     desc: "Merge, convert, compress and edit documents.",
-    count: 12,
     icon: FileText,
     color: "red",
   },
   {
     name: "Images & Graphics",
     desc: "Resize, optimize and transform images.",
-    count: 18,
     icon: Image,
     color: "green",
   },
   {
     name: "AI & Machine Learning",
     desc: "Discover AI-powered tools and services.",
-    count: 25,
     icon: Sparkles,
     color: "purple",
   },
   {
     name: "Developer Tools",
     desc: "Format, encode, test and debug.",
-    count: 20,
     icon: Code,
     color: "blue",
   },
   {
     name: "Business & Finance",
     desc: "Invoices, GST, calculations and more.",
-    count: 15,
     icon: BriefcaseBusiness,
     color: "orange",
   },
   {
     name: "Education",
     desc: "Calculators and useful student resources.",
-    count: 10,
     icon: GraduationCap,
     color: "blue",
   },
   {
     name: "Productivity",
     desc: "Make everyday tasks easier.",
-    count: 14,
     icon: Zap,
     color: "orange",
   },
   {
     name: "Design & Creative",
     desc: "Explore creative resources and utilities.",
-    count: 9,
     icon: PenTool,
     color: "pink",
   },
@@ -350,101 +361,101 @@ const tools = [
     icon: FileCode,
     color: "purple",
     type: "internal",
-    route: "/tools/qr-generator",
+    route: "/tools/qr-code-generator",
   },
 
   // CREATE & BUILD TOOLS
 
-{
-  name: "Survey Maker",
-  desc: "Create custom surveys and collect responses.",
-  category: "Productivity",
-  icon: FileText,
-  color: "blue",
-  type: "internal",
-  route: "/tools/survey-maker",
-},
-{
-  name: "Quiz Maker",
-  desc: "Create interactive quizzes and test knowledge.",
-  category: "Education",
-  icon: GraduationCap,
-  color: "purple",
-  type: "internal",
-  route: "/tools/quiz-maker",
-},
-{
-  name: "Poll Maker",
-  desc: "Create polls and collect votes.",
-  category: "Productivity",
-  icon: BarChart,
-  color: "green",
-  type: "internal",
-  route: "/tools/poll-maker",
-},
-{
-  name: "Form Builder",
-  desc: "Build custom forms with multiple fields.",
-  category: "Productivity",
-  icon: FileText,
-  color: "blue",
-  type: "internal",
-  route: "/tools/form-builder",
-},
-{
-  name: "Resume Maker",
-  desc: "Create a professional resume in minutes.",
-  category: "Business & Finance",
-  icon: BriefcaseBusiness,
-  color: "orange",
-  type: "internal",
-  route: "/tools/resume-maker",
-},
-{
-  name: "Invoice Generator",
-  desc: "Generate professional invoices.",
-  category: "Business & Finance",
-  icon: Calculator,
-  color: "orange",
-  type: "internal",
-  route: "/tools/invoice-generator",
-},
-{
-  name: "Certificate Maker",
-  desc: "Design and download certificates.",
-  category: "Design & Creative",
-  icon: Award,
-  color: "purple",
-  type: "internal",
-  route: "/tools/certificate-maker",
-},
-{
-  name: "Flashcard Maker",
-  desc: "Create flashcards for effective learning.",
-  category: "Education",
-  icon: Layers,
-  color: "blue",
-  type: "internal",
-  route: "/tools/flashcard-maker",
-},
-{
-  name: "Timetable Maker",
-  desc: "Create and organize your weekly timetable.",
-  category: "Productivity",
-  icon: GraduationCap,
-  color: "green",
-  type: "internal",
-  route: "/tools/timetable-maker",
-},
-{
-  name: "Random Name Picker",
-  desc: "Pick random names from a list.",
-  category: "Productivity",
-  icon: Shuffle,
-  color: "purple",
-  type: "internal",
-  route: "/tools/random-name-picker",
-},
+  {
+    name: "Survey Maker",
+    desc: "Create custom surveys and collect responses.",
+    category: "Productivity",
+    icon: FileText,
+    color: "blue",
+    type: "internal",
+    route: "/tools/survey-maker",
+  },
+  {
+    name: "Quiz Maker",
+    desc: "Create interactive quizzes and test knowledge.",
+    category: "Education",
+    icon: GraduationCap,
+    color: "purple",
+    type: "internal",
+    route: "/tools/quiz-maker",
+  },
+  {
+    name: "Poll Maker",
+    desc: "Create polls and collect votes.",
+    category: "Productivity",
+    icon: BarChart,
+    color: "green",
+    type: "internal",
+    route: "/tools/poll-maker",
+  },
+  {
+    name: "Form Builder",
+    desc: "Build custom forms with multiple fields.",
+    category: "Productivity",
+    icon: FileText,
+    color: "blue",
+    type: "internal",
+    route: "/tools/form-builder",
+  },
+  {
+    name: "Resume Maker",
+    desc: "Create a professional resume in minutes.",
+    category: "Business & Finance",
+    icon: BriefcaseBusiness,
+    color: "orange",
+    type: "internal",
+    route: "/tools/resume-maker",
+  },
+  {
+    name: "Invoice Generator",
+    desc: "Generate professional invoices.",
+    category: "Business & Finance",
+    icon: Calculator,
+    color: "orange",
+    type: "internal",
+    route: "/tools/invoice-generator",
+  },
+  {
+    name: "Certificate Maker",
+    desc: "Design and download certificates.",
+    category: "Design & Creative",
+    icon: Award,
+    color: "purple",
+    type: "internal",
+    route: "/tools/certificate-maker",
+  },
+  {
+    name: "Flashcard Maker",
+    desc: "Create flashcards for effective learning.",
+    category: "Education",
+    icon: Layers,
+    color: "blue",
+    type: "internal",
+    route: "/tools/flashcard-maker",
+  },
+  {
+    name: "Timetable Maker",
+    desc: "Create and organize your weekly timetable.",
+    category: "Productivity",
+    icon: GraduationCap,
+    color: "green",
+    type: "internal",
+    route: "/tools/timetable-maker",
+  },
+  {
+    name: "Random Name Picker",
+    desc: "Pick random names from a list.",
+    category: "Productivity",
+    icon: Shuffle,
+    color: "purple",
+    type: "internal",
+    route: "/tools/random-name-picker",
+  },
 ];
 
 const externalTools = [
@@ -452,54 +463,164 @@ const externalTools = [
     name: "ChatGPT",
     desc: "AI assistant for research, writing and problem solving.",
     category: "AI",
+    filterCategory: "AI & Machine Learning",
+    keywords: "chatbot generative ai assistant answers research writing",
     url: "https://chatgpt.com",
   },
   {
     name: "Canva",
     desc: "Create presentations, graphics and designs.",
     category: "Design",
+    filterCategory: "Design & Creative",
+    keywords: "graphic design presentation poster templates",
     url: "https://www.canva.com",
   },
   {
     name: "GitHub",
     desc: "Build and collaborate on software projects.",
     category: "Development",
+    filterCategory: "Developer Tools",
+    keywords: "git repository source code version control",
     url: "https://github.com",
   },
   {
     name: "Figma",
     desc: "Design interfaces and collaborate with teams.",
     category: "Design",
+    filterCategory: "Design & Creative",
+    keywords: "ui ux prototype wireframe interface",
     url: "https://www.figma.com",
   },
 ];
 
+const searchKeywords = {
+  "PDF Merger": "merge merger join combine documents files",
+  "PDF Splitter": "split separate divide pages documents",
+  "PDF Page Rotator": "rotate orientation turn portrait landscape",
+  "JPG to PDF": "convert images photos pictures document",
+  "PDF Compressor": "compress shrink reduce optimize file size",
+  "PDF to Word": "docx editable document text conversion",
+  "Word to PDF": "docx document conversion",
+  "PDF Editor": "annotate edit sign add text markup",
+  "OCR PDF": "recognize scanned text extraction",
+  "PDF Page Extractor": "extract select pages save separate",
+  "Image Compressor": "compress optimize shrink file size",
+  "Image Resizer": "resize scale dimensions resolution",
+  "PNG to JPG": "jpeg convert image format",
+  "JPG to PNG": "convert image format",
+  "Image Cropper": "crop trim cut dimensions",
+  "Image to Base64": "encode data uri string",
+  "Base64 to Image": "decode data uri string",
+  "Image Converter": "webp jpeg jpg png format",
+  "HEIC to JPG": "iphone apple photos convert jpeg",
+  "Background Remover": "transparent cutout remove backdrop",
+  "JSON Formatter": "prettify minify parse validate developer data",
+  "GST Calculator": "tax goods services inclusive exclusive",
+  "CGPA Calculator": "gpa grade point average semester",
+  "QR Code Generator": "barcode link url wifi text scan",
+  "Survey Maker": "questionnaire feedback questions responses",
+  "Quiz Maker": "test assessment multiple choice questions",
+  "Poll Maker": "vote voting options results",
+  "Form Builder": "input fields responses submit form",
+  "Resume Maker": "cv job profile employment",
+  "Invoice Generator": "bill billing receipt payment",
+  "Certificate Maker": "award diploma achievement",
+  "Flashcard Maker": "study learning revision cards",
+  "Timetable Maker": "schedule calendar class planner",
+  "Random Name Picker": "lottery chooser shuffle winner group list",
+};
+
+const storedToolsKey = "xylo-recent-tools";
+const favoriteToolsKey = "xylo-favorite-tools";
+const validToolIds = new Set([
+  ...tools.map((tool) => tool.route),
+  ...externalTools.map((tool) => tool.url),
+]);
+
+function readStorage(storage, key, fallback = "") {
+  try {
+    return storage.getItem(key) ?? fallback;
+  } catch (error) {
+    console.error(`Unable to read XYLO preference "${key}".`, error);
+    return fallback;
+  }
+}
+
+function readStoredRoutes(key) {
+  try {
+    const stored = JSON.parse(localStorage.getItem(key) || "[]");
+    return Array.isArray(stored)
+      ? stored.filter((toolId) => validToolIds.has(toolId))
+      : [];
+  } catch (error) {
+    console.error(`Unable to read XYLO preferences from ${key}.`, error);
+    return [];
+  }
+}
+
 function HomePage() {
   const navigate = useNavigate();
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(
+    () => readStorage(localStorage, "xylo-dark-mode") === "true",
+  );
   const [search, setSearch] = useState(
-    () => sessionStorage.getItem("xylo-home-search") || ""
+    () => readStorage(sessionStorage, "xylo-home-search"),
   );
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [activeCategory, setActiveCategory] = useState(
-    () => sessionStorage.getItem("xylo-active-category") || "All"
+    () => {
+      const savedCategory = readStorage(sessionStorage, "xylo-active-category");
+      return categories.some((category) => category.name === savedCategory)
+        ? savedCategory
+        : "All";
+    },
   );
+  const [viewFilter, setViewFilter] = useState("All");
+  const [recentTools, setRecentTools] = useState(() =>
+    readStoredRoutes(storedToolsKey),
+  );
+  const [favoriteTools, setFavoriteTools] = useState(() =>
+    readStoredRoutes(favoriteToolsKey),
+  );
+  const [notice, setNotice] = useState("");
 
   const searchRef = useRef(null);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("xylo-dark-mode", String(dark));
+    } catch (error) {
+      console.error("Unable to save the XYLO theme preference.", error);
+    }
+  }, [dark]);
+
+  useEffect(() => {
+    if (!notice) return undefined;
+    const timeout = window.setTimeout(() => setNotice(""), 2800);
+    return () => window.clearTimeout(timeout);
+  }, [notice]);
 
   // Keep the selected category and search when a tool is opened and
   // the user later returns to the homepage with the browser Back button.
   useEffect(() => {
-    sessionStorage.setItem("xylo-active-category", activeCategory);
+    try {
+      sessionStorage.setItem("xylo-active-category", activeCategory);
+    } catch (error) {
+      console.error("Unable to save the selected XYLO category.", error);
+    }
   }, [activeCategory]);
 
   useEffect(() => {
-    sessionStorage.setItem("xylo-home-search", search);
+    try {
+      sessionStorage.setItem("xylo-home-search", search);
+    } catch (error) {
+      console.error("Unable to save the XYLO search.", error);
+    }
   }, [search]);
 
   // Restore the exact homepage scroll position after returning from a tool.
   useEffect(() => {
-    const savedScroll = sessionStorage.getItem("xylo-home-scroll");
+    const savedScroll = readStorage(sessionStorage, "xylo-home-scroll", null);
     if (savedScroll === null) return;
 
     const scrollY = Number(savedScroll);
@@ -507,34 +628,104 @@ function HomePage() {
       requestAnimationFrame(() => window.scrollTo(0, scrollY));
     });
 
-    sessionStorage.removeItem("xylo-home-scroll");
+    try {
+      sessionStorage.removeItem("xylo-home-scroll");
+    } catch (error) {
+      console.error("Unable to clear the saved XYLO scroll position.", error);
+    }
     return () => cancelAnimationFrame(frame1);
   }, []);
 
   const openTool = (route) => {
-    sessionStorage.setItem("xylo-home-scroll", String(window.scrollY));
-    sessionStorage.setItem("xylo-active-category", activeCategory);
-    sessionStorage.setItem("xylo-home-search", search);
+    try {
+      sessionStorage.setItem("xylo-home-scroll", String(window.scrollY));
+      sessionStorage.setItem("xylo-active-category", activeCategory);
+      sessionStorage.setItem("xylo-home-search", search);
+    } catch (error) {
+      console.error("Unable to save XYLO homepage navigation state.", error);
+      setNotice("Homepage state could not be saved for this session.");
+    }
+    recordRecentTool(route);
     navigate(route);
   };
 
-  const filteredTools = tools.filter((tool) => {
-    const matchesSearch = `${tool.name} ${tool.desc} ${tool.category}`
-      .toLowerCase()
-      .includes(search.toLowerCase());
+  const toggleFavorite = (route) => {
+    const isFavorite = favoriteTools.includes(route);
+    const updatedFavorites = isFavorite
+      ? favoriteTools.filter((item) => item !== route)
+      : [route, ...favoriteTools];
 
+    setFavoriteTools(updatedFavorites);
+    try {
+      localStorage.setItem(favoriteToolsKey, JSON.stringify(updatedFavorites));
+      setNotice(isFavorite ? "Removed from favorites." : "Added to favorites.");
+    } catch (error) {
+      console.error("Unable to save XYLO favorites.", error);
+      setNotice("Could not save your favorites on this device.");
+    }
+  };
+
+  const searchText = (tool) =>
+    `${tool.name} ${tool.desc} ${tool.category} ${tool.filterCategory || ""} ${tool.keywords || searchKeywords[tool.name] || ""}`
+      .toLowerCase();
+  const searchTerms = search
+    .toLowerCase()
+    .match(/[\p{L}\p{N}]+/gu) || [];
+  const matchesSearch = (tool) => {
+    const text = searchText(tool);
+    return searchTerms.every((term) => text.includes(term));
+  };
+  const recordRecentTool = (toolId) => {
+    const updatedRecent = [toolId, ...recentTools.filter((item) => item !== toolId)].slice(
+      0,
+      8,
+    );
+    setRecentTools(updatedRecent);
+    try {
+      localStorage.setItem(storedToolsKey, JSON.stringify(updatedRecent));
+    } catch (error) {
+      console.error("Unable to save recently used XYLO tools.", error);
+      setNotice("Could not save your recent tools on this device.");
+    }
+  };
+
+  const filteredTools = tools.filter((tool) => {
     const matchesCategory =
       activeCategory === "All" || tool.category === activeCategory;
+    const matchesView =
+      viewFilter === "All" ||
+      (viewFilter === "Recently used" && recentTools.includes(tool.route)) ||
+      (viewFilter === "Favorites" && favoriteTools.includes(tool.route));
 
-    return matchesSearch && matchesCategory;
+    return matchesSearch(tool) && matchesCategory && matchesView;
   });
 
-  const suggestions = search.trim()
-    ? tools
-        .filter((tool) =>
-          `${tool.name} ${tool.desc} ${tool.category}`
-            .toLowerCase()
-            .includes(search.toLowerCase()),
+  const filteredExternalTools = externalTools.filter((tool) => {
+    const matchesCategory =
+      activeCategory === "All" || tool.filterCategory === activeCategory;
+    const matchesView =
+      viewFilter === "All" ||
+      (viewFilter === "Recently used" && recentTools.includes(tool.url)) ||
+      (viewFilter === "Favorites" && favoriteTools.includes(tool.url));
+    const inScope = searchTerms.length > 0 || activeCategory !== "All" || viewFilter !== "All";
+
+    return inScope && matchesSearch(tool) && matchesCategory && matchesView;
+  });
+
+  const suggestions = searchTerms.length > 0
+    ? [
+        ...tools,
+        ...externalTools.map((tool) => ({
+          ...tool,
+          icon: Globe,
+          color: "blue",
+        })),
+      ]
+        .filter(
+          (tool) =>
+            matchesSearch(tool) &&
+            (activeCategory === "All" ||
+              (tool.filterCategory || tool.category) === activeCategory),
         )
         .slice(0, 5)
     : [];
@@ -548,7 +739,13 @@ function HomePage() {
   const selectSuggestion = (tool) => {
     setSearch(tool.name);
     setShowSuggestions(false);
-    setActiveCategory("All");
+    scrollTo("tools");
+  };
+
+  const selectCategory = (categoryName) => {
+    setActiveCategory((current) =>
+      current === categoryName ? "All" : categoryName,
+    );
     scrollTo("tools");
   };
 
@@ -664,7 +861,6 @@ function HomePage() {
                 onChange={(e) => {
                   setSearch(e.target.value);
                   setShowSuggestions(true);
-                  setActiveCategory("All");
                 }}
                 onFocus={() => setShowSuggestions(true)}
                 placeholder="Search tools, websites or categories..."
@@ -697,7 +893,7 @@ function HomePage() {
               </button>
             </div>
 
-            {showSuggestions && search.trim() && (
+            {showSuggestions && searchTerms.length > 0 && (
               <div className="suggestion-panel">
                 {suggestions.length > 0 ? (
                   <>
@@ -744,7 +940,7 @@ function HomePage() {
           <div className="popular-searches">
             <strong>Popular:</strong>
 
-            {["PDF", "AI Tools", "Images", "Business"].map((item) => (
+            {["PDF", "Images", "GST", "study"].map((item) => (
               <button
                 key={item}
                 onClick={() => {
@@ -825,7 +1021,7 @@ function HomePage() {
         <div className="benefit">
           <Zap />
           <div>
-            <strong>100+ Tools</strong>
+            <strong>{tools.length} Tools</strong>
             <span>Free to use</span>
           </div>
         </div>
@@ -833,7 +1029,7 @@ function HomePage() {
         <div className="benefit">
           <Layers />
           <div>
-            <strong>15+ Categories</strong>
+            <strong>{categories.length} Categories</strong>
             <span>Explore & discover</span>
           </div>
         </div>
@@ -890,9 +1086,7 @@ function HomePage() {
                 className="category-card"
                 key={category.name}
                 onClick={() => {
-                  setActiveCategory(category.name);
-                  setSearch("");
-                  scrollTo("tools");
+                  selectCategory(category.name);
                 }}
               >
                 <span className={`category-icon ${category.color}`}>
@@ -904,7 +1098,13 @@ function HomePage() {
                   <p>{category.desc}</p>
                 </div>
 
-                <span className="category-count">{category.count} tools</span>
+                <span className="category-count">
+                  {tools.filter((tool) => tool.category === category.name).length +
+                    externalTools.filter(
+                      (tool) => tool.filterCategory === category.name,
+                    ).length}{" "}
+                  tools
+                </span>
 
                 <ArrowUpRight className="category-arrow" size={17} />
               </button>
@@ -928,15 +1128,38 @@ function HomePage() {
             <p>Simple utilities for your everyday tasks.</p>
           </div>
 
-          <span className="result-count">{filteredTools.length} tools</span>
+          <span className="result-count">
+            {filteredTools.length + filteredExternalTools.length} results
+          </span>
         </div>
 
         <div className="filter-row">
           <button
-            className={activeCategory === "All" ? "filter-active" : ""}
-            onClick={() => setActiveCategory("All")}
+            className={
+              activeCategory === "All" && viewFilter === "All"
+                ? "filter-active"
+                : ""
+            }
+            onClick={() => {
+              setActiveCategory("All");
+              setViewFilter("All");
+            }}
           >
             All tools
+          </button>
+
+          <button
+            className={viewFilter === "Recently used" ? "filter-active" : ""}
+            onClick={() => setViewFilter("Recently used")}
+          >
+            <Clock3 size={14} /> Recently used
+          </button>
+
+          <button
+            className={viewFilter === "Favorites" ? "filter-active" : ""}
+            onClick={() => setViewFilter("Favorites")}
+          >
+            <Star size={14} /> Favorites
           </button>
 
           {categories.map((category) => (
@@ -945,7 +1168,9 @@ function HomePage() {
               className={
                 activeCategory === category.name ? "filter-active" : ""
               }
-              onClick={() => setActiveCategory(category.name)}
+              onClick={() => {
+                selectCategory(category.name);
+              }}
             >
               {category.name}
             </button>
@@ -963,7 +1188,24 @@ function HomePage() {
                     <Icon size={24} />
                   </span>
 
-                  <span className="free-badge">FREE</span>
+                  <div className="tool-card-badges">
+                    <span className="free-badge">FREE</span>
+                    <button
+                      className={`favorite-toggle ${
+                        favoriteTools.includes(tool.route) ? "is-favorite" : ""
+                      }`}
+                      type="button"
+                      aria-label={
+                        favoriteTools.includes(tool.route)
+                          ? `Remove ${tool.name} from favorites`
+                          : `Add ${tool.name} to favorites`
+                      }
+                      aria-pressed={favoriteTools.includes(tool.route)}
+                      onClick={() => toggleFavorite(tool.route)}
+                    >
+                      <Star size={17} fill={favoriteTools.includes(tool.route) ? "currentColor" : "none"} />
+                    </button>
+                  </div>
                 </div>
 
                 <span className="tool-category">{tool.category}</span>
@@ -982,8 +1224,56 @@ function HomePage() {
             );
           })}
 
-          {filteredTools.length === 0 && (
-            <p className="empty-result">No matching tools found.</p>
+          {filteredExternalTools.map((tool) => (
+            <article className="tool-card external-tool-result" key={tool.url}>
+              <div className="tool-card-top">
+                <span className="tool-icon blue">
+                  <Globe size={24} />
+                </span>
+                <button
+                  className={`favorite-toggle ${
+                    favoriteTools.includes(tool.url) ? "is-favorite" : ""
+                  }`}
+                  type="button"
+                  aria-label={
+                    favoriteTools.includes(tool.url)
+                      ? `Remove ${tool.name} from favorites`
+                      : `Add ${tool.name} to favorites`
+                  }
+                  aria-pressed={favoriteTools.includes(tool.url)}
+                  onClick={() => toggleFavorite(tool.url)}
+                >
+                  <Star
+                    size={17}
+                    fill={
+                      favoriteTools.includes(tool.url) ? "currentColor" : "none"
+                    }
+                  />
+                </button>
+              </div>
+              <span className="tool-category">{tool.category} website</span>
+              <h3>{tool.name}</h3>
+              <p>{tool.desc}</p>
+              <a
+                className="tool-action"
+                href={tool.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => recordRecentTool(tool.url)}
+              >
+                Visit website <ExternalLink size={17} />
+              </a>
+            </article>
+          ))}
+
+          {filteredTools.length === 0 && filteredExternalTools.length === 0 && (
+            <p className="empty-result" role="status">
+              {viewFilter === "Favorites" && favoriteTools.length === 0
+                ? "You haven’t favorited any tools yet."
+                : viewFilter === "Recently used" && recentTools.length === 0
+                  ? "Open a tool and it will appear here."
+                  : "No matching tools found. Try another search or filter."}
+            </p>
           )}
         </div>
       </section>
@@ -1011,26 +1301,49 @@ function HomePage() {
 
         <div className="external-grid">
           {externalTools.map((tool) => (
-            <a
-              className="external-card"
-              href={tool.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={tool.name}
-            >
+            <article className="external-card" key={tool.name}>
               <div className="external-top">
                 <span>{tool.category}</span>
-                <ExternalLink size={18} />
+                <div className="external-card-actions">
+                  <button
+                    className={`favorite-toggle ${
+                      favoriteTools.includes(tool.url) ? "is-favorite" : ""
+                    }`}
+                    type="button"
+                    aria-label={
+                      favoriteTools.includes(tool.url)
+                        ? `Remove ${tool.name} from favorites`
+                        : `Add ${tool.name} to favorites`
+                    }
+                    aria-pressed={favoriteTools.includes(tool.url)}
+                    onClick={() => toggleFavorite(tool.url)}
+                  >
+                    <Star
+                      size={17}
+                      fill={
+                        favoriteTools.includes(tool.url)
+                          ? "currentColor"
+                          : "none"
+                      }
+                    />
+                  </button>
+                  <ExternalLink size={18} />
+                </div>
               </div>
-
-              <h3>{tool.name}</h3>
-
-              <p>{tool.desc}</p>
-
-              <span className="external-link">
-                Visit website <ArrowUpRight size={16} />
-              </span>
-            </a>
+              <a
+                className="external-card-link"
+                href={tool.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => recordRecentTool(tool.url)}
+              >
+                <h3>{tool.name}</h3>
+                <p>{tool.desc}</p>
+                <span className="external-link">
+                  Visit website <ArrowUpRight size={16} />
+                </span>
+              </a>
+            </article>
           ))}
         </div>
       </section>
@@ -1052,9 +1365,9 @@ function HomePage() {
           </p>
         </div>
 
-        <button className="submit-button">
+        <Link className="submit-button" to="/contact">
           Submit your tool <ArrowUpRight size={18} />
-        </button>
+        </Link>
       </section>
 
       {/* FOOTER */}
@@ -1077,7 +1390,11 @@ function HomePage() {
             <a href="#tools">Tools</a>
             <a href="#categories">Categories</a>
             <a href="#discover">Discover</a>
-            <a href="#submit">Submit</a>
+            <Link to="/about">About</Link>
+            <Link to="/contact">Contact</Link>
+            <Link to="/privacy">Privacy</Link>
+            <Link to="/terms">Terms</Link>
+            <Link to="/faq">FAQ</Link>
           </div>
         </div>
 
@@ -1086,17 +1403,53 @@ function HomePage() {
           <span>Discover. Explore. Get things done.</span>
         </div>
       </footer>
+      {notice && (
+        <div className="xylo-toast" role="status" aria-live="polite">
+          {notice}
+        </div>
+      )}
     </div>
   );
+}
+
+class RouteErrorBoundary extends Component {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error) {
+    console.error("XYLO could not render this page.", error);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <main className="tool-error" role="alert">
+          <h1>This page couldn’t be loaded.</h1>
+          <p>Try returning to XYLO or reload the page.</p>
+          <a href="/">Back to XYLO</a>
+        </main>
+      );
+    }
+
+    return this.props.children;
+  }
 }
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Suspense
-        fallback={<div className="tool-loading">Loading XYLO tool...</div>}
-      >
-        <Routes>
+      <RouteErrorBoundary>
+        <Suspense
+          fallback={
+            <div className="tool-loading" role="status" aria-live="polite">
+              Loading XYLO tool...
+            </div>
+          }
+        >
+          <Routes>
           <Route path="/" element={<HomePage />} />
 
           <Route path="/tools/pdf-merger" element={<PDFMerger />} />
@@ -1149,9 +1502,25 @@ export default function App() {
             path="/tools/random-name-picker"
             element={<RandomNamePicker />}
           />
-          <Route path="*" element={<h2>404 — Page not found</h2>} />
-        </Routes>
-      </Suspense>
+          <Route path="/tools/json-formatter" element={<JSONFormatter />} />
+
+          <Route path="/tools/gst-calculator" element={<GSTCalculator />} />
+
+          <Route path="/tools/cgpa-calculator" element={<CGPACalculator />} />
+
+          <Route
+            path="/tools/qr-code-generator"
+            element={<QRCodeGenerator />}
+          />
+          <Route path="/about" element={<SitePage page="about" />} />
+          <Route path="/contact" element={<SitePage page="contact" />} />
+          <Route path="/privacy" element={<SitePage page="privacy" />} />
+          <Route path="/terms" element={<SitePage page="terms" />} />
+          <Route path="/faq" element={<SitePage page="faq" />} />
+            <Route path="*" element={<SitePage page="notFound" />} />
+          </Routes>
+        </Suspense>
+      </RouteErrorBoundary>
     </BrowserRouter>
   );
 }

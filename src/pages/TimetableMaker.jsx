@@ -57,7 +57,14 @@ const colors = [
 ];
 
 export default function TimetableMaker() {
-  const [title, setTitle] = useState("My Weekly Timetable");
+  const [title, setTitle] = useState(() => {
+    try {
+      return localStorage.getItem("xylo-timetable-title") || "My Weekly Timetable";
+    } catch (error) {
+      console.error("Unable to load the saved timetable title.", error);
+      return "My Weekly Timetable";
+    }
+  });
 
   const [schedule, setSchedule] = useState(() => {
     try {
@@ -81,11 +88,6 @@ export default function TimetableMaker() {
   useEffect(() => {
     localStorage.setItem("xylo-timetable-title", title);
   }, [title]);
-
-  useEffect(() => {
-    const savedTitle = localStorage.getItem("xylo-timetable-title");
-    if (savedTitle) setTitle(savedTitle);
-  }, []);
 
   const addActivity = (e) => {
     e.preventDefault();
